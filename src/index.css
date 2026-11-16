@@ -1,0 +1,495 @@
+:root {
+  --bg: #f5f5f5;
+  --surface: #ffffff;
+  --text: #171717;
+  --muted: #737373;
+  --faint: #a3a3a3;
+  --border: #e5e5e5;
+  --zigzag: #cfcfcf;
+  --chip-bg: #ffffff;
+  --pill-bg: #ebebeb;
+  --accent: #2563eb;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Dark theme: toggled via the data-theme attribute on <html> */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #151515;
+  --surface: #1b1b1b;
+  --text: #ededed;
+  --muted: #9a9a9a;
+  --faint: #6b6b6b;
+  --border: #2a2a2a;
+  --zigzag: #3a3a3a;
+  --chip-bg: #1b1b1b;
+  --pill-bg: #232323;
+  --accent: #6ea8ff;
+}
+
+/* ---------- Theme switch animation ---------- */
+/* Preferred path: View Transitions API cross-fades the whole page */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 450ms;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Fallback for browsers without View Transitions */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+    color 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+    border-color 0.4s cubic-bezier(0.32, 0.72, 0, 1) !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- Layout: one narrow centered column ---------- */
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 3rem;
+}
+
+/* Zigzag divider (drawn with a mask so it follows the theme color) */
+.divider {
+  height: 6px;
+  margin: 2.25rem 0;
+  background: var(--zigzag);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6' viewBox='0 0 8 6'%3E%3Cpath d='M0 3 L2 1 L6 5 L8 3' fill='none' stroke='black' stroke-width='1'/%3E%3C/svg%3E") repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6' viewBox='0 0 8 6'%3E%3Cpath d='M0 3 L2 1 L6 5 L8 3' fill='none' stroke='black' stroke-width='1'/%3E%3C/svg%3E") repeat-x;
+}
+
+/* ---------- Section heading ---------- */
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+}
+.section-heading h2 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.see-all {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.see-all:hover {
+  color: var(--text);
+}
+
+/* ---------- Theme toggle ---------- */
+.theme-toggle {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  background: var(--chip-bg);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.theme-toggle:hover {
+  color: var(--text);
+  border-color: var(--faint);
+}
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Both icons stack in the same spot and swap with a rotate + scale + fade */
+.theme-icon {
+  grid-area: 1 / 1;
+  width: 16px;
+  height: 16px;
+  transition:
+    transform 0.5s cubic-bezier(0.32, 0.72, 0, 1),
+    opacity 0.3s ease;
+}
+.icon-sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+.icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.4);
+}
+:root[data-theme="dark"] .icon-sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.4);
+}
+:root[data-theme="dark"] .icon-moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* ---------- Hero ---------- */
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.avatar-fallback {
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--pill-bg);
+  color: var(--muted);
+}
+.hero h1 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.intro {
+  color: var(--muted);
+  line-height: 1.75;
+}
+.intro + .intro {
+  margin-top: 1rem;
+}
+.highlight {
+  color: var(--text);
+  border-bottom: 1px dotted var(--faint);
+}
+
+/* Inline chips used inside sentences and under works */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--chip-bg);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  transition: border-color 0.15s, color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.chip-brand:hover {
+  background: var(--hover-bg, var(--chip-bg));
+  color: var(--hover-text, var(--text));
+  border-color: var(--hover-bg, var(--faint));
+}
+
+.chip-outline {
+  padding: 0.15rem 0.75rem;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+}
+
+/* ---------- Journey timeline ---------- */
+.timeline {
+  position: relative;
+  margin-left: 0.5rem;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--border);
+}
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0 0.9rem;
+}
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+.timeline-dot {
+  position: absolute;
+  left: calc(-1.25rem - 4px);
+  top: 0.95rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--faint);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.timeline-role {
+  font-weight: 500;
+}
+.timeline-org {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.timeline-org a:hover {
+  color: var(--text);
+}
+.pill {
+  flex-shrink: 0;
+  padding: 0 0.6rem;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--muted);
+  background: var(--pill-bg);
+  border-radius: 6px;
+}
+
+
+/* ---------- Works grid ---------- */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem 1rem;
+}
+.work {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.work-preview {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  transition: transform 0.2s ease;
+}
+.work-preview:hover {
+  transform: translateY(-2px);
+}
+.work-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.work-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  font-weight: 600;
+  color: var(--faint);
+  background: linear-gradient(135deg, var(--surface), var(--pill-bg));
+}
+.work h3 {
+  margin-top: 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.work-tagline {
+  margin: 0.1rem 0 0.6rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ---------- Notes ---------- */
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.note {
+  display: block;
+}
+.note-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+.note h3 {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.note time {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.note p {
+  margin-top: 0.15rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.note:hover h3 {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Tech stack ---------- */
+.stack {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5rem 0.5rem;
+}
+.stack li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+}
+.stack-badge {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  transition:
+    transform 0.3s cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+.stack-badge svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--brand);
+  filter: drop-shadow(0 0 0 transparent) drop-shadow(0 0 0 transparent);
+  transition: fill 0.3s ease, filter 0.3s ease;
+}
+.stack-name {
+  font-size: 0.7rem;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+/* Hover (both themes): lift slightly and brighten the label */
+.stack li:hover .stack-badge {
+  cursor: pointer;
+}
+.stack li:hover .stack-name {
+  color: var(--text);
+}
+
+/* Hover (dark mode only): glow */
+:root[data-theme="dark"] .stack li:hover .stack-badge {
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--border));
+  box-shadow: 0 0 18px -2px color-mix(in srgb, var(--brand) 45%, transparent);
+}
+:root[data-theme="dark"] .stack li:hover .stack-badge svg {
+  filter:
+    drop-shadow(0 0 3px color-mix(in srgb, var(--brand) 80%, transparent))
+    drop-shadow(0 0 8px color-mix(in srgb, var(--brand) 50%, transparent));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack li:hover .stack-badge { transform: none; }
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.footer nav {
+  display: flex;
+  gap: 1rem;
+}
+.footer a:hover {
+  color: var(--text);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+  .container {
+    padding-top: 3rem;
+  }
+  .works-grid {
+    gap: 1.5rem 0.75rem;
+  }
+  .stack {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .timeline-item {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .work-preview { transition: none; }
+  .theme-icon { transition: none; }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
