@@ -1,7 +1,7 @@
 import type { Work } from "../data/content";
 import SectionHeading from "./SectionHeading";
 
-function WorkCard({ work }: { work: Work }) {
+export function WorkCard({ work }: { work: Work }) {
   return (
     <article className="work">
       <a href={work.url} target="_blank" rel="noreferrer" className="work-preview">
@@ -25,7 +25,7 @@ function WorkCard({ work }: { work: Work }) {
 export default function Works({ works }: { works: Work[] }) {
   return (
     <section id="works">
-      <SectionHeading title="Works" seeAllUrl="#" />
+      <SectionHeading title="Works" seeAllUrl="/works" />
       <div className="works-grid">
         {works.map((w) => (
           <WorkCard key={w.title} work={w} />
@@ -34,3 +34,5 @@ export default function Works({ works }: { works: Work[] }) {
     </section>
   );
 }
+
+

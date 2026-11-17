@@ -9,6 +9,19 @@
   --chip-bg: #ffffff;
   --pill-bg: #ebebeb;
   --accent: #2563eb;
+  --claude: #D97757;
+
+  /* iOS-inspired spacing scale */
+  --spacing-xxs: 0.25rem;  /*  4px */
+  --spacing-xs: 0.5rem;    /*  8px */
+  --spacing-sm: 0.75rem;   /* 12px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 2.5rem;   /* 40px */
+  --spacing-3xl: 3rem;     /* 48px */
+  --spacing-4xl: 4rem;     /* 64px */
+  --spacing-5xl: 5rem;     /* 80px */
 }
 
 :root[data-theme="light"] {
@@ -28,6 +41,7 @@
   --chip-bg: #1b1b1b;
   --pill-bg: #232323;
   --accent: #6ea8ff;
+  --claude: #D97757;
 }
 
 /* ---------- Theme switch animation ---------- */
@@ -60,10 +74,12 @@ html {
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 15px;
+  /* iOS text styles (HIG, default size): Body 17/22 · Subhead 15/20 · Footnote 13/18 · Caption 12/16 */
+  font-size: 0.975rem;
   color: var(--text);
   background: var(--bg);
-  line-height: 1.6;
+  line-height: 1.294;
+  -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -104,12 +120,19 @@ a {
   margin-bottom: 1.1rem;
 }
 .section-heading h2 {
-  font-size: 0.9rem;
+  font-size: 0.9375rem;
+  line-height: 1.333;
   font-weight: 400;
   color: var(--muted);
 }
+.section-heading h2:hover{
+  color: var(--claude);
+  cursor: pointer;
+}
+
 .see-all {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
+  line-height: 1.385;
   color: var(--muted);
 }
 .see-all:hover {
@@ -191,22 +214,24 @@ a {
   display: grid;
   place-items: center;
   font-size: 0.75rem;
+  line-height: 1.333;
   font-weight: 600;
   background: var(--pill-bg);
   color: var(--muted);
 }
 .hero h1 {
-  font-size: 0.95rem;
-  font-weight: 500;
-  line-height: 1.3;
+  font-size: 1.0625rem; /* Headline */
+  font-weight: 600;
+  line-height: 1.294;
 }
 .subtitle {
-  font-size: 0.9rem;
+  font-size: 0.9375rem; /* Subhead */
+  line-height: 1.333;
   color: var(--muted);
 }
 .intro {
   color: var(--muted);
-  line-height: 1.75;
+  line-height: 1.294; /* Body */
 }
 .intro + .intro {
   margin-top: 1rem;
@@ -221,8 +246,8 @@ a {
   display: inline-flex;
   align-items: center;
   padding: 0 0.5rem;
-  font-size: 0.8rem;
-  line-height: 1.6;
+  font-size: 0.8125rem; /* Footnote */
+  line-height: 1.385;
   color: var(--text);
   background: var(--chip-bg);
   border: 1px solid var(--border);
@@ -259,6 +284,9 @@ a {
   gap: 1rem;
   padding: 0.35rem 0 0.9rem;
 }
+.timeline-item:hover .timeline-dot {
+  background: var(--claude);
+}
 .timeline-item:last-child {
   padding-bottom: 0;
 }
@@ -271,12 +299,24 @@ a {
   border-radius: 50%;
   background: var(--faint);
   box-shadow: 0 0 0 3px var(--bg);
+  transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: scale(1.4)
+}
+
+.timeline-body,
+.pill {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .timeline-item:hover .timeline-body,
+  .timeline-item:hover .pill { transform: translateY(-2px); }
 }
 .timeline-role {
-  font-weight: 500;
+  font-weight: 600; /* Headline */
 }
 .timeline-org {
-  font-size: 0.85rem;
+  font-size: 0.9rem; /* Subhead */
+  line-height: 1.333;
   color: var(--muted);
 }
 .timeline-org a:hover {
@@ -285,8 +325,8 @@ a {
 .pill {
   flex-shrink: 0;
   padding: 0 0.6rem;
-  font-size: 0.75rem;
-  line-height: 1.7;
+  font-size: 0.75rem; /* Caption 1 */
+  line-height: 1.333;
   color: var(--muted);
   background: var(--pill-bg);
   border-radius: 6px;
@@ -335,12 +375,14 @@ a {
 }
 .work h3 {
   margin-top: 0.7rem;
-  font-size: 0.85rem;
+  font-size: 0.9375rem; /* Subhead, semibold */
+  line-height: 1.333;
   font-weight: 600;
 }
 .work-tagline {
   margin: 0.1rem 0 0.6rem;
-  font-size: 0.8rem;
+  font-size: 0.8125rem; /* Footnote */
+  line-height: 1.385;
   color: var(--muted);
 }
 
@@ -360,17 +402,18 @@ a {
   align-items: baseline;
 }
 .note h3 {
-  font-size: 0.85rem;
+  font-size: 1.0625rem; /* Body */
   font-weight: 500;
 }
 .note time {
   flex-shrink: 0;
-  font-size: 0.78rem;
+  font-size: 0.8125rem; /* Footnote */
   color: var(--muted);
 }
 .note p {
   margin-top: 0.15rem;
-  font-size: 0.82rem;
+  font-size: 0.9375rem; /* Subhead */
+  line-height: 1.333;
   color: var(--muted);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -380,6 +423,117 @@ a {
 .note:hover h3 {
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* ---------- Services ---------- */
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.service {
+  display: block;
+}
+.service h3 {
+  font-size: 0.975rem; /* Body */
+  font-weight: 500;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.service p {
+  margin-top: 0.15rem;
+  font-size: 0.9rem; /* Subhead */
+  line-height: 1.333;
+  color: var(--muted);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* iOS-style lift on hover */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .service:hover h3,
+  .service:hover p { transform: translateY(-2px); }
+}
+
+/* ---------- Skills page ---------- */
+.container > h1 {
+  margin: 1.25rem 0 1.75rem;
+  font-size: 2.125rem; /* Large Title 34/41 */
+  line-height: 1.206;
+  font-weight: 700;
+}
+.skill-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.skill-group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+.skill-group-head h2 {
+  font-size: 0.975rem; /* Subhead */
+  line-height: 1.333;
+  font-weight: 500;
+  color: var(--muted);
+}
+.skill-group-head svg {
+  width: 18px;
+  height: 18px;
+}
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing-xxs) * 2);
+  list-style: none;
+}
+.skill-list li {
+  padding: 0.2rem 0.8rem;
+  font-size: 0.8125rem; /* Footnote */
+  line-height: 1.385;
+  color: var(--muted);
+  background: var(--pill-bg);
+  border-radius: 999px;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s ease;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .skill-list li:hover {
+    color: var(--claude);
+    transform: translateY(-2px);
+  }
+}
+
+/* ---------- Page load animation ---------- */
+/* Each top-level block fades up in sequence. Pages remount on route change,
+   so this plays on first load and every navigation. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .container > :not(.skill-groups),
+  .skill-group {
+    animation: rise-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--n, 0) * 90ms);
+  }
+  .container > :nth-child(2) { --n: 1; }
+  .container > :nth-child(3) { --n: 2; }
+  .container > :nth-child(4) { --n: 3; }
+  .container > :nth-child(5) { --n: 4; }
+  .container > :nth-child(6) { --n: 5; }
+  .container > :nth-child(7) { --n: 6; }
+  .container > :nth-child(8) { --n: 7; }
+  .container > :nth-child(9) { --n: 8; }
+  .container > :nth-child(n + 10) { --n: 9; }
+  /* Skills page: groups follow the back link and title */
+  .skill-group { --n: 2; }
+  .skill-group:nth-child(2) { --n: 3; }
+  .skill-group:nth-child(3) { --n: 4; }
+  .skill-group:nth-child(4) { --n: 5; }
 }
 
 /* ---------- Tech stack ---------- */
@@ -400,7 +554,7 @@ a {
   place-items: center;
   width: 34px;
   height: 34px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--muted);
   background: var(--surface);
@@ -419,7 +573,8 @@ a {
   transition: fill 0.3s ease, filter 0.3s ease;
 }
 .stack-name {
-  font-size: 0.7rem;
+  font-size: 0.75rem; /* Caption 1 */
+  line-height: 1.333;
   color: var(--muted);
   transition: color 0.3s ease;
 }
@@ -457,7 +612,8 @@ a {
   margin-top: 3rem;
   padding-top: 1.1rem;
   border-top: 1px solid var(--border);
-  font-size: 0.8rem;
+  font-size: 0.8125rem; /* Footnote */
+  line-height: 1.385;
   color: var(--muted);
 }
 .footer nav {

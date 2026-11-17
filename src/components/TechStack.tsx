@@ -4,7 +4,7 @@ import SectionHeading from "./SectionHeading";
 export default function TechStack({ items }: { items: Tech[] }) {
   return (
     <section id="stack">
-      <SectionHeading title="Tech Stack" seeAllUrl="#" />
+      <SectionHeading title="Tech Stack" seeAllUrl="/skills" />
       <ul className="stack">
         {items.map((t) => (
           <li key={t.name}>

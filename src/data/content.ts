@@ -22,6 +22,7 @@ export interface Profile {
   intro: { before: string; highlight: string; after: string };
   socials: Social[];
   email: string;
+  footerLinks?: FooterLink[];
 }
 
 export interface JourneyItem {
@@ -47,11 +48,30 @@ export interface Note {
   url: string;
 }
 
+export interface Service {
+  title: string;
+  summary: string;
+}
+
 export interface Tech {
   name: string;
   icon: SimpleIcon;
   color?: string;
 }
+
+export interface SkillGroup {
+  title: string;
+  /** Lucide icon drawing: one SVG path `d` string per shape */
+  iconPaths: string[];
+  skills: string[];
+}
+
+export interface FooterLink { 
+  label: string; 
+  url: string 
+}
+
+
 
 export const profile: Profile = {
   name: "Ken Matthew Ammay",
@@ -78,8 +98,15 @@ export const profile: Profile = {
       hoverText: "#ffffff",
     },
   ],
-  email: "ammayken@email.com",
+  email: "ammayken@gmail.com",
+  footerLinks: [
+    { 
+      label: "Facebook", 
+      url: "https://www.facebook.com/KEEEEEEEEEEEEEEEEEEEN"
+    }
+  ]
 };
+
 
 export const journey: JourneyItem[] = [
   {
@@ -150,6 +177,21 @@ export const notes: Note[] = [
   },
 ];
 
+export const services: Service[] = [
+  {
+    title: "Responsive Business Website Development",
+    summary: "I build modern, responsive business websites using WordPress and Elementor. I focus on creating clean layouts, user-friendly navigation, and mobile-friendly designs that help businesses establish a professional online presence."
+  },
+  {
+    title: "Custom Web Application Development",
+    summary: "I develop custom web applications using Laravel and React, building functional and scalable solutions based on specific project requirements. I work on both front-end and back-end development, creating interactive user interfaces and reliable application functionalities."
+  },
+  {
+    title: "Website Performance & SEO Optimization",
+    summary: "I improve existing websites by focusing on loading speed, performance, and search engine optimization. I work on optimizing website structure, improving mobile responsiveness, and implementing SEO best practices."
+  }
+];
+
 export const stack: Tech[] = [
   { name: "Laravel", icon: siLaravel  },
   { name: "Node.js", icon: siNodedotjs },
@@ -163,4 +205,38 @@ export const stack: Tech[] = [
   { name: "MySQL", icon: siMysql },
   { name: "Figma", icon: siFigma },
   { name: "Git", icon: siGit  },
+];
+
+export const skillGroups: SkillGroup[] = [
+  {
+    title: "Frontend and Web",
+    iconPaths: ["m18 16 4-4-4-4", "m6 8-4 4 4 4", "m14.5 4-5 16"],
+    skills: ["HTML", "CSS", "JavaScript", "JQuery", "React", "Vue.js", "Angular", "Tailwind CSS", "Bootstrap", "Responsive Design"]
+  },
+  {
+    title: "Backend and Data",
+    iconPaths: [
+      "M3 5a9 3 0 1 0 18 0a9 3 0 1 0-18 0Z",
+      "M3 5V19A9 3 0 0 0 21 19V5",
+      "M3 12A9 3 0 0 0 21 12",
+    ],
+    skills: ["PHP", "Laravel", "Node.js", "Express.js", "REST APIs", "MySQL", "SQL", "Redis", "BullMQ", "ERD Design", "Database Management", "Authentication"]
+  },
+  {
+    title: "UI/UX Design and SEO",
+    iconPaths: [
+      "M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z",
+      "m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18",
+      "m2.3 2.3 7.286 7.286",
+      "M9 11a2 2 0 1 0 4 0a2 2 0 1 0-4 0Z",
+    ],
+    skills: ["Figma", "Wireframing", "UI/UX Design", "WordPress", "Elementor", "Gutenberg", "WordPress page builders", "Custom WordPress Themes", "SEO Optimization", "Google Analytics"]
+  },
+  {
+    title: "Tools and Workflows",
+    iconPaths: [
+      "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z",
+    ],
+    skills: ["Git", "GitHub", "Postman", "VS Code", "CLI", "Slack", "Google Workspace", "Claude", "Codex", "DigitalOcean", "Deployment", "Server Management"]
+  }
 ];
