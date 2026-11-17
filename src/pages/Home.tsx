@@ -1,9 +1,9 @@
-import { journey, notes, profile, stack, works } from "../data/content";
+import { journey, profile, stack, works, services } from "../data/content";
 import Hero from "../components/Hero";
 import Divider from "../components/Divider";
 import Journey from "../components/Journey";
 import Works from "../components/Works";
-import Notes from "../components/Notes";
+import Services from "../components/Services";
 import TechStack from "../components/TechStack";
 import Footer from "../components/Footer";
 
@@ -16,7 +16,7 @@ export default function Home() {
             <Divider />
             <Works works={works} />
             <Divider />
-            <Notes notes={notes} />
+            <Services services={services} />
             <Divider />
             <TechStack items={stack} />
             <Footer profile={profile} />

@@ -4,7 +4,7 @@ import SectionHeading from "./SectionHeading";
 export default function Journey({ items }: { items: JourneyItem[] }) {
   return (
     <section id="journey">
-      <SectionHeading title="Work Experience" />
+      <SectionHeading title="My Journey" />
       <ol className="timeline">
         {items.map((item) => (
           <li key={`${item.org}-${item.period}`} className="timeline-item">

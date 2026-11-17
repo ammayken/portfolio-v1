@@ -1,12 +1,14 @@
-import type { Profile } from "../data/content";
+import { type Profile } from "../data/content";
 
 export default function Footer({ profile }: { profile: Profile }) {
+  const links = [...profile.socials, ...(profile.footerLinks ?? [])];
+
   return (
     <footer className="footer">
       <nav aria-label="Footer links">
-        {profile.socials.map((s) => (
-          <a key={s.label} href={s.url} target="_blank" rel="noreferrer">
-            {s.label}
+        {links.map((l) => (
+          <a key={l.label} href={l.url} target="_blank" rel="noreferrer">
+            {l.label}
           </a>
         ))}
       </nav>
