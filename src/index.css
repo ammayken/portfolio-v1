@@ -386,6 +386,22 @@ a {
   color: var(--muted);
 }
 
+.work-tech {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+  list-style: none;
+}
+.work-tech li {
+  padding: 0.1rem 0.6rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  background: var(--pill-bg);
+  border-radius: 999px;
+}
+
 /* ---------- Notes ---------- */
 .notes {
   display: flex;

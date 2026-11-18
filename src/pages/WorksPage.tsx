@@ -11,7 +11,7 @@ export default function WorksPage() {
       <h1>Works</h1>
       <div className="works-grid">
         {works.map((w) => (
-          <WorkCard key={w.title} work={w} />
+          <WorkCard key={w.title} work={w} showTech />
         ))}
       </div>
     </main>
