@@ -39,6 +39,7 @@ export interface Work {
   url: string;
   /** Optional preview image, e.g. "/works/project-one.png" */
   image?: string;
+  tech?: string[];
 }
 
 export interface Note {
@@ -130,29 +131,54 @@ export const journey: JourneyItem[] = [
 
 export const works: Work[] = [
   {
-    title: "Project One",
-    tagline: "A short line about what it does",
-    domain: "project-one.dev",
-    url: "https://project-one.dev",
+    title: "AdSync",
+    tagline: "Connects Google ad clicks to real revenue.",
+    domain: "dashboard.getadsync.ai",
+    url: "https://dashboard.getadsync.ai/",
+    image: "/works/adsync.png",
+    tech: ["React", "Node.js", "MySQL", "Redis"]
   },
   {
-    title: "Project Two",
-    tagline: "Another one-line description",
-    domain: "project-two.app",
-    url: "https://project-two.app",
+    title: "Interlinked",
+    tagline: "Marketplace connecting publishers and link buyers.",
+    domain: "app.interlinked.se",
+    url: "https://app.interlinked.se",
+    image: "/works/interlinked.png",
+    tech: ["Laravel", "MySQL", "npm"]
+
   },
   {
-    title: "Project Three",
-    tagline: "A third project worth showing",
-    domain: "project-three.com",
-    url: "https://project-three.com",
+    title: "Think Certified",
+    tagline: "HVAC Maintenance Services",
+    domain: "thinkcertified.com",
+    url: "https://thinkcertified.com",
+    image: "/works/thinkcertified.png",
+    tech: ["WordPress", "Gutenberg", "Custom WordPress Theme", "Custom Plugins"]
   },
   {
-    title: "Project Four",
-    tagline: "Keep taglines short and specific",
-    domain: "project-four.io",
-    url: "https://project-four.io",
+    title: "Fiddlers Contest & Festival",
+    tagline: "Fiddlers Contest & Festival platform",
+    domain: "www.fiddlecontest.org",
+    url: "https://www.fiddlecontest.org",
+    image: "/works/fiddlecontest.png",
+    tech: ["WordPress", "Custom WordPress Theme"]
   },
+  {
+    title: "Christina Gressianu Photography",
+    tagline: "Proffessional Photography Portfolio",
+    domain: "photocg.co",
+    url: "https://www.photocg.co/",
+    image: "/works/photocg.png",
+    tech: ["WordPress", "Gutenberg"]
+  },
+  {
+    title: "Rod Locker's Blog",
+    tagline: "Fishing tales and Testimonials",
+    domain: "blog.rodlocker.com/",
+    url: "https://blog.rodlocker.com/",
+    image: "/works/blogrodlocker.png",
+    tech: ["WordPress", "Gutenberg", "Custom WordPress Theme"]
+  }
 ];
 
 export const notes: Note[] = [
@@ -211,7 +237,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Frontend and Web",
     iconPaths: ["m18 16 4-4-4-4", "m6 8-4 4 4 4", "m14.5 4-5 16"],
-    skills: ["HTML", "CSS", "JavaScript", "JQuery", "React", "Vue.js", "Angular", "Tailwind CSS", "Bootstrap", "Responsive Design"]
+    skills: ["HTML", "CSS", "JavaScript", "JQuery", "React", "TypeScript", "Vue.js", "Angular", "Tailwind CSS", "Bootstrap", "Responsive Design"]
   },
   {
     title: "Backend and Data",
@@ -220,7 +246,7 @@ export const skillGroups: SkillGroup[] = [
       "M3 5V19A9 3 0 0 0 21 19V5",
       "M3 12A9 3 0 0 0 21 12",
     ],
-    skills: ["PHP", "Laravel", "Node.js", "Express.js", "REST APIs", "MySQL", "SQL", "Redis", "BullMQ", "ERD Design", "Database Management", "Authentication"]
+    skills: ["PHP", "Laravel", "Node.js", "Express.js", "REST APIs", "API Development", "MySQL", "SQL", "Redis", "BullMQ", "ERD Design", "Database Management", "Authentication"]
   },
   {
     title: "UI/UX Design and SEO",
