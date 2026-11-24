@@ -2,17 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="color-scheme" content="light dark" />
     <script>
       (function () {
         try {
           var t = localStorage.getItem("theme");
-          if (t !== "light" && t !== "dark") {
-            t = matchMedia("(prefers-color-scheme: dark)").matches
-              ? "dark"
-              : "light";
-          }
+          if (t !== "light" && t !== "dark") t = "light";
           document.documentElement.dataset.theme = t;
         } catch (e) {}
       })();
