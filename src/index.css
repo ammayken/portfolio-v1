@@ -352,10 +352,11 @@ a {
 /* ---------- Works grid ---------- */
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.75rem 1rem;
 }
 .work {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -701,6 +702,17 @@ a {
   }
   .works-grid {
     gap: 1.5rem 0.75rem;
+  }
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.6rem;
+    text-align: center;
+  }
+  .footer nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 1rem;
   }
   .stack {
     grid-template-columns: repeat(3, 1fr);
