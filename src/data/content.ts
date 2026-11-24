@@ -1,16 +1,25 @@
 import type { SimpleIcon } from "simple-icons";
 import {
-  siReact, siTypescript, siTailwindcss, siNodedotjs,
-  siLaravel, siAngular, siGit, siWordpress,
-  siMysql, siElementor, siPhp, siFigma,
+  siReact,
+  siTypescript,
+  siTailwindcss,
+  siNodedotjs,
+  siLaravel,
+  siAngular,
+  siGit,
+  siWordpress,
+  siMysql,
+  siElementor,
+  siPhp,
+  siFigma,
 } from "simple-icons";
 
 export interface Social {
   label: string;
   url: string;
   lead: string;
-  hoverBg?: string; 
-  hoverText?: string; 
+  hoverBg?: string;
+  hoverText?: string;
 }
 
 export interface Profile {
@@ -67,16 +76,15 @@ export interface SkillGroup {
   skills: string[];
 }
 
-export interface FooterLink { 
-  label: string; 
-  url: string 
+export interface FooterLink {
+  label: string;
+  url: string;
 }
-
-
 
 export const profile: Profile = {
   name: "Ken Matthew Ammay",
   title: "Full-Stack Developer",
+  avatar: "/40x40_icon_personal.webp",
   intro: {
     before: "Hi! I'm a Web Developer with ",
     highlight: "3 years of professional experience",
@@ -84,16 +92,16 @@ export const profile: Profile = {
       " in website development, front-end development, and building responsive web applications. I specialize in creating modern, performance-optimized, and SEO-friendly websites using industry-standard technologies and best coding practices.",
   },
   socials: [
-    { 
-      label: "GitHub", 
-      url: "https://github.com/ammayken", 
+    {
+      label: "GitHub",
+      url: "https://github.com/ammayken",
       lead: "writing code on",
       hoverBg: "#232925",
       hoverText: "#F2F5F3",
     },
-    { 
-      label: "LinkedIn", 
-      url: "https://linkedin.com/in/ken-matthew-ammay-883869250", 
+    {
+      label: "LinkedIn",
+      url: "https://linkedin.com/in/ken-matthew-ammay-883869250",
       lead: "or connect with me professionally on",
       hoverBg: "#0077B5",
       hoverText: "#ffffff",
@@ -101,13 +109,12 @@ export const profile: Profile = {
   ],
   email: "ammayken@gmail.com",
   footerLinks: [
-    { 
-      label: "Facebook", 
-      url: "https://www.facebook.com/KEEEEEEEEEEEEEEEEEEEN"
-    }
-  ]
+    {
+      label: "Facebook",
+      url: "https://www.facebook.com/KEEEEEEEEEEEEEEEEEEEN",
+    },
+  ],
 };
-
 
 export const journey: JourneyItem[] = [
   {
@@ -136,16 +143,15 @@ export const works: Work[] = [
     domain: "dashboard.getadsync.ai",
     url: "https://dashboard.getadsync.ai/",
     image: "/works/adsync.png",
-    tech: ["React", "Node.js", "MySQL", "Redis"]
+    tech: ["React", "Node.js", "MySQL", "Redis"],
   },
   {
     title: "Interlinked",
-    tagline: "Marketplace connecting publishers and link buyers.",
+    tagline: "Connecting publishers and link buyers.",
     domain: "app.interlinked.se",
     url: "https://app.interlinked.se",
     image: "/works/interlinked.png",
-    tech: ["Laravel", "MySQL", "npm"]
-
+    tech: ["Laravel", "MySQL", "npm"],
   },
   {
     title: "Think Certified",
@@ -153,15 +159,20 @@ export const works: Work[] = [
     domain: "thinkcertified.com",
     url: "https://thinkcertified.com",
     image: "/works/thinkcertified.png",
-    tech: ["WordPress", "Gutenberg", "Custom WordPress Theme", "Custom Plugins"]
+    tech: [
+      "WordPress",
+      "Gutenberg",
+      "Custom WordPress Theme",
+      "Custom Plugins",
+    ],
   },
   {
     title: "Fiddlers Contest & Festival",
     tagline: "Fiddlers Contest & Festival platform",
-    domain: "www.fiddlecontest.org",
+    domain: "fiddlecontest.org",
     url: "https://www.fiddlecontest.org",
     image: "/works/fiddlecontest.png",
-    tech: ["WordPress", "Custom WordPress Theme"]
+    tech: ["WordPress", "Custom WordPress Theme"],
   },
   {
     title: "Christina Gressianu Photography",
@@ -169,16 +180,16 @@ export const works: Work[] = [
     domain: "photocg.co",
     url: "https://www.photocg.co/",
     image: "/works/photocg.png",
-    tech: ["WordPress", "Gutenberg"]
+    tech: ["WordPress", "Gutenberg"],
   },
   {
     title: "Rod Locker's Blog",
     tagline: "Fishing tales and Testimonials",
-    domain: "blog.rodlocker.com/",
+    domain: "blog.rodlocker.com",
     url: "https://blog.rodlocker.com/",
     image: "/works/blogrodlocker.png",
-    tech: ["WordPress", "Gutenberg", "Custom WordPress Theme"]
-  }
+    tech: ["WordPress", "Gutenberg", "Custom WordPress Theme"],
+  },
 ];
 
 export const notes: Note[] = [
@@ -191,13 +202,15 @@ export const notes: Note[] = [
   },
   {
     title: "What I Learned Shipping My First App",
-    summary: "Another short summary that gives the reader a reason to click through.",
+    summary:
+      "Another short summary that gives the reader a reason to click through.",
     date: "Sep 19, 2026",
     url: "#",
   },
   {
     title: "Notes on Learning TypeScript",
-    summary: "A third post. Delete the Notes section in App.tsx if you don't want a blog.",
+    summary:
+      "A third post. Delete the Notes section in App.tsx if you don't want a blog.",
     date: "Sep 16, 2026",
     url: "#",
   },
@@ -206,38 +219,54 @@ export const notes: Note[] = [
 export const services: Service[] = [
   {
     title: "Responsive Business Website Development",
-    summary: "I build modern, responsive business websites using WordPress and Elementor. I focus on creating clean layouts, user-friendly navigation, and mobile-friendly designs that help businesses establish a professional online presence."
+    summary:
+      "I build modern, responsive business websites using WordPress and Elementor. I focus on creating clean layouts, user-friendly navigation, and mobile-friendly designs that help businesses establish a professional online presence.",
   },
   {
     title: "Custom Web Application Development",
-    summary: "I develop custom web applications using Laravel and React, building functional and scalable solutions based on specific project requirements. I work on both front-end and back-end development, creating interactive user interfaces and reliable application functionalities."
+    summary:
+      "I develop custom web applications using Laravel and React, building functional and scalable solutions based on specific project requirements. I work on both front-end and back-end development, creating interactive user interfaces and reliable application functionalities.",
   },
   {
     title: "Website Performance & SEO Optimization",
-    summary: "I improve existing websites by focusing on loading speed, performance, and search engine optimization. I work on optimizing website structure, improving mobile responsiveness, and implementing SEO best practices."
-  }
+    summary:
+      "I improve existing websites by focusing on loading speed, performance, and search engine optimization. I work on optimizing website structure, improving mobile responsiveness, and implementing SEO best practices.",
+  },
 ];
 
 export const stack: Tech[] = [
-  { name: "Laravel", icon: siLaravel  },
+  { name: "Laravel", icon: siLaravel },
   { name: "Node.js", icon: siNodedotjs },
   { name: "React", icon: siReact },
   { name: "Angular", icon: siAngular, color: "#dd0031" },
-  { name: "TypeScript", icon: siTypescript},
+  { name: "TypeScript", icon: siTypescript },
   { name: "Tailwind CSS", icon: siTailwindcss },
   { name: "WordPress", icon: siWordpress },
   { name: "Elementor", icon: siElementor },
   { name: "Php", icon: siPhp },
   { name: "MySQL", icon: siMysql },
   { name: "Figma", icon: siFigma },
-  { name: "Git", icon: siGit  },
+  { name: "Git", icon: siGit },
 ];
 
 export const skillGroups: SkillGroup[] = [
   {
     title: "Frontend and Web",
     iconPaths: ["m18 16 4-4-4-4", "m6 8-4 4 4 4", "m14.5 4-5 16"],
-    skills: ["HTML", "CSS", "JavaScript", "JQuery", "React", "TypeScript", "Vue.js", "Angular", "Tailwind CSS", "Bootstrap", "Responsive Design"]
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "JQuery",
+      "React",
+      "TypeScript",
+      "Vue.js",
+      "Angular",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Responsive Design",
+      "Prettier",
+    ],
   },
   {
     title: "Backend and Data",
@@ -246,7 +275,21 @@ export const skillGroups: SkillGroup[] = [
       "M3 5V19A9 3 0 0 0 21 19V5",
       "M3 12A9 3 0 0 0 21 12",
     ],
-    skills: ["PHP", "Laravel", "Node.js", "Express.js", "REST APIs", "API Development", "MySQL", "SQL", "Redis", "BullMQ", "ERD Design", "Database Management", "Authentication"]
+    skills: [
+      "PHP",
+      "Laravel",
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "API Development",
+      "MySQL",
+      "SQL",
+      "Redis",
+      "BullMQ",
+      "ERD Design",
+      "Database Management",
+      "Authentication",
+    ],
   },
   {
     title: "UI/UX Design and SEO",
@@ -256,13 +299,37 @@ export const skillGroups: SkillGroup[] = [
       "m2.3 2.3 7.286 7.286",
       "M9 11a2 2 0 1 0 4 0a2 2 0 1 0-4 0Z",
     ],
-    skills: ["Figma", "Wireframing", "UI/UX Design", "WordPress", "Elementor", "Gutenberg", "WordPress page builders", "Custom WordPress Themes", "SEO Optimization", "Google Analytics"]
+    skills: [
+      "Figma",
+      "Wireframing",
+      "UI/UX Design",
+      "WordPress",
+      "Elementor",
+      "Gutenberg",
+      "WordPress page builders",
+      "Custom WordPress Themes",
+      "SEO Optimization",
+      "Google Analytics",
+    ],
   },
   {
     title: "Tools and Workflows",
     iconPaths: [
       "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z",
     ],
-    skills: ["Git", "GitHub", "Postman", "VS Code", "CLI", "Slack", "Google Workspace", "Claude", "Codex", "DigitalOcean", "Deployment", "Server Management"]
-  }
+    skills: [
+      "Git",
+      "GitHub",
+      "Postman",
+      "VS Code",
+      "CLI",
+      "Slack",
+      "Google Workspace",
+      "Claude",
+      "Codex",
+      "DigitalOcean",
+      "Deployment",
+      "Server Management",
+    ],
+  },
 ];
